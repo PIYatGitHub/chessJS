@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
+
+* {box-sizing: border-box; margin: 0; padding: 0; }
+body  {font-family: 'Open Sans Condensed', sans-serif;}
+body{background: #244f6a;}
+h1, h2 {text-align: center; color: white;}
+h1{padding-top: 1em;}
+h2{padding-bottom: 1em;}
+
+#board table{border-collapse: collapse; margin: 0 auto;}
+.fields{text-align: center; cursor: pointer;
+}
+#info{
+  color: white; font-size: 1.25em; margin-left: 48%;
+  overflow-y: scroll; width: 20%; max-height: 150px;}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 25%; /* Location of the box */
+  left: 0;
+  top: 0;
+  color: white;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #2a7091;
+  margin: auto;
+  padding: 1em;
+  flex-direction: column;
+  display: flex;
+  border: 1px solid #888;
+  width: 34.5%;
+}
+
+.promotingButtons{align-self: center;}
+.promoteToFigure{border: none; background: transparent; color: white; font-size: 3em;}
+.promoteToFigure{border: 1px solid white; border-radius: 0.3em;  cursor: pointer;}
+.promoteModalTexts {font-size: 1.25em; padding: .3em 0; text-align: center;}
+.promoteToFigure:hover{color:#2a7091; background: white;}
