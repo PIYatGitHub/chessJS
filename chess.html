@@ -17,14 +17,44 @@
   <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-  <h1>Welcome to the wonderful game of chess.</h1>
-  <h2>Enjoy and play as much as possible.</h2>
-  <div id="board"></div>
-  <div id="info"></div>
+  <header>
+    <h1>Welcome to the wonderful game of chess.</h1>
+    <h2>Enjoy and play as much as possible.</h2>
+  </header>
+  <main>
+    <section> <div id="board"></div></section>
+    <nav>
+      <h2>Information panel</h2>
+      <h3> Moves</h3>
+      <div id="moves"></div>
 
-  <!-- The Modal -->
+      <h3>Chess actions</h3>
+      <div id="chess_actions"> <button>New game</button> <button>Resign</button> <button>Offer draw</button></div>
+
+      <div class="timedGame">
+        <h3>Timer</h3>
+        <span>W</span>
+        <span id="t_white">00:00</span>
+        <span id="t_black">00:00</span>
+        <span>B</span>
+      </div>
+
+      <div class="scoring">
+        <h3>The score</h3>
+        <span>W</span>
+        <span id="s_white">0</span>
+        <span> &#8596; </span>
+        <span id="s_black">0</span>
+        <span>B</span>
+      </div>
+
+    </nav>
+
+  </main>
+  <footer>&copy;  Dev. <a href="https://github.com/PIYatGitHub">Petar Ivanov Yonkov </a>,
+                  based on the course of <a href="https://www.udemy.com/chess-js/">Evgeny Volosatov</a>. </footer>
+
   <div id="pawnPromoteModal" class="modal">
-    <!-- Modal content -->
     <div class="modal-content">
       <p class="promoteModalTexts">Choose your pawn promotion below: </p>
       <div class="promotingButtons">
@@ -33,7 +63,6 @@
         <button class="promoteToFigure" onclick="promote_pawn(from_figure, x_clon, y_clon, 'B')">&#9815;</button>
         <button class="promoteToFigure" onclick="promote_pawn(from_figure, x_clon, y_clon, 'N')">&#9816;</button>
       </div>
-
       <p class="promoteModalTexts"><em>Color is for style only and does not affect the figure to be restored.</em></p>
     </div>
   </div>

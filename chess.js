@@ -1,8 +1,7 @@
 let map = Array(), inf = Array(),
-    move_color='white', move_from_x, move_from_y,pawn_attack_x,pawn_attack_y,x_clon,y_clon,promote_pawn_to,
-    from_figure, to_figure, save_pawn_figure, save_pawn_x, save_pawn_y, possible_moves,
-    can_white_castle_left = true, can_white_castle_right = true,
-    can_black_castle_left = true, can_black_castle_right = true;
+    move_color='white', move_from_x, move_from_y,pawn_attack_x,pawn_attack_y,x_clon,y_clon,from_figure, to_figure,
+    save_pawn_figure, save_pawn_x, save_pawn_y, possible_moves, current_move = Array(), can_white_castle_left = true,
+    can_white_castle_right = true, can_black_castle_left = true, can_black_castle_right = true;
 
 function init_map() {
   can_white_castle_left  = true;
@@ -14,10 +13,10 @@ function init_map() {
     ["N","P","","","","","p","n"],
     ["B","P","","","","","p","b"],
     ["Q","P","","","","","p","q"],
-    ["K","P","","","","","p","k"],
+    ["","K","","P","","","p","k"],
     ["B","P","","","","","p","b"],
     ["N","P","","","","","p","n"],
-    ["R","P","","","","","p","r"]
+    ["R","P","","q","","","p","r"]
   ];
 }
 
@@ -109,7 +108,6 @@ function is_correct_king_move(sx,sy,dx,dy) {
 
 function can_castle(sx,sy,dx,dy) {
   let figure = map[sx][sy];
-
   if (figure === 'K'
       && sx === 4 && sy === 0
       && dx === 6 && dy === 0) return white_castle_to_the_right();
@@ -304,16 +302,38 @@ function back_figure(sx,sy,dx,dy) {
 }
 
 function click_box_to(to_x,to_y) {
+  form_current_move(move_from_x,move_from_y,to_x,to_y);
   move_figure(move_from_x,move_from_y,to_x, to_y);
-  if((to_y === 7 || to_y === 0) && is_pawn(from_figure)){document.getElementById('pawnPromoteModal').style.display = 'block';
-  x_clon = to_x; y_clon = to_y;}
+  if((to_y === 7 || to_y === 0) &&
+    is_pawn(from_figure)){document.getElementById('pawnPromoteModal').style.display = 'block'; x_clon = to_x; y_clon = to_y;}
   update_castle_flags(move_from_x,move_from_y,to_x,to_y);
   move_casltling_rook(move_from_x,move_from_y,to_x,to_y);
   check_pawn_attack(from_figure,to_x, to_y);
   turn_move();
   mark_moves_from();
+  form_current_move_aux();
   show_board();
 }
+
+function form_current_move(move_from_x,move_from_y,to_x,to_y) {
+  //TODO Refine that into two columns and stuff///
+  let mapToLetter = ['a','b','c','d','e','f','g','h'], entry = '';
+  if(map[move_from_x][move_from_y].toUpperCase()!=='P') entry += map[move_from_x][move_from_y];
+  console.log('map tox toy',map[to_x][to_y]);
+  if(map[to_x][to_y] !== '') entry += ' X ';
+  entry += `${mapToLetter[move_from_x]}${move_from_y+1} ${map[to_x][to_y]} ${mapToLetter[to_x]}${to_y+1}`;
+  if(map[move_from_x][move_from_y] === 'K' && can_white_castle_left &&  to_x ===2) {entry += ' O-O-O';}
+  if(map[move_from_x][move_from_y] === 'K' && can_white_castle_right && to_x ===6) {entry += ' O-O'  ;}
+  if(map[move_from_x][move_from_y] === 'k' && can_black_castle_left &&  to_x ===2) {entry += ' O-O-O';}
+  if(map[move_from_x][move_from_y] === 'k' && can_black_castle_right && to_x ===6) {entry += ' O-O'  ;}
+  current_move.push(entry);
+  current_move.push("<br/>");
+}
+function form_current_move_aux(){
+  if(is_check() && possible_moves !== 0)      current_move[current_move.length-2] += ' +';
+  if(is_checkmate() && possible_moves === 0)  current_move[current_move.length-2] += ' #';
+}
+
 
 function update_castle_flags(from_x, from_y, to_x, to_y) {
   let figure = map[to_x][to_y];
@@ -420,15 +440,9 @@ function show_board() {
 }
 
 function show_info() {
-  let html = "Who is on the move? " + move_color + "<br/>";
-  if(is_checkmate()) html += "CHECKMATE!" + "<br/>";
-  if(is_stalemate()) html += "STALEMATE!" + "<br/>";
-  if(is_check() && !is_checkmate() && !is_stalemate()) html += "CHECK!" + "<br/>";
-  if(!can_white_castle_left)  html  += "White have lost their castle to the left!"  + "<br/>";
-  if(!can_white_castle_right) html  += "White have lost their castle to the right!" + "<br/>";
-  if(!can_black_castle_left)  html  += "Black have lost their castle to the left!"  + "<br/>";
-  if(!can_black_castle_right) html  += "Black have lost their castle to the right!" + "<br/>";
-  document.getElementById('info').innerHTML = html;
+  let html = "Who is on the move? " + move_color + "<br/>", curr_move = current_move.join("");
+  html+= curr_move;
+  document.getElementById('moves').innerHTML = html;
 }
 
 function start() {

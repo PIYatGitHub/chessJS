@@ -7,12 +7,25 @@ h1, h2 {text-align: center; color: white;}
 h1{padding-top: 1em;}
 h2{padding-bottom: 1em;}
 
+
+body            {display: flex; flex-direction: column;}
+main            {display: flex;}
+nav             {width: 20vw; margin-left: 2%;}
+main            {flex: 1;}
+section         {flex: 1;}
+nav             {order: -1;}
+nav             {display: flex; flex-direction: column; justify-content: space-between;}
+
+@media only screen and (max-width: 48em) {/*the 768px breakpoint goes here*/}
+
+
+
 #board table{border-collapse: collapse; margin: 0 auto;}
 .fields{text-align: center; cursor: pointer;
 }
-#info{
-  color: white; font-size: 1.25em; margin-left: 48%;
-  overflow-y: scroll; width: 20%; max-height: 150px;}
+#moves{
+  color: white; font-size: 1.25em; max-height: 10em;
+  overflow-y: auto;}
 
 .modal {
   display: none; /* Hidden by default */
