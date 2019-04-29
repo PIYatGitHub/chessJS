@@ -27,12 +27,14 @@
       <h2>Action panel</h2>
       <h3> Moves</h3>
       <div id="moves"></div>
-
+    </nav>
+    <aside>
       <h3>Chess actions</h3>
-      <div id="chess_actions">  <button id="newGame" onclick="start_new_game();">New game</button>
-                                <button onclick="resignGame();">Resign</button>
-                                <button>Offer draw</button></div>
-
+      <div id="chess_actions">
+        <button id="newGame" class="actionButtons" onclick="start_new_game();">New game</button>
+        <button class="actionButtons" onclick="open_resign_modal();">Resign</button>
+        <button class="actionButtons" onclick="offer_draw();">Offer draw</button>
+      </div>
       <div class="timedGame">
         <h3>Timer</h3>
         <span>W</span> <button onclick="alternate_time('white')">End move</button>
@@ -49,9 +51,7 @@
         <span id="s_black">0</span>
         <span>B</span>
       </div>
-
-    </nav>
-
+    </aside>
   </main>
   <footer>&copy;  Dev. <a href="https://github.com/PIYatGitHub">Petar Ivanov Yonkov </a>,
                   based on the course of <a href="https://www.udemy.com/chess-js/">Evgeny Volosatov</a>. </footer>
@@ -68,11 +68,24 @@
       <p class="promoteModalTexts"><em>Color is for style only and does not affect the figure to be restored.</em></p>
     </div>
   </div>
-
   <div id="startNewGame" class="modal">
     <div class="modal-content">
       <p class="sngTexts">Start a new game of chess!</p>
       <button onclick="start_new_game()">OK!</button>
+    </div>
+  </div>
+  <div id="resignModal" class="modal">
+    <div class="modal-content">
+      <p class="resignTexts">You are about to resign the game. It will cost you ONE FULL point! Are you sure?</p>
+      <button onclick="resignGame()">YES</button>
+      <button onclick="hide_resign_modal()"> OOPS, CANCEL THAT</button>
+    </div>
+  </div>
+  <div id="offerDraw" class="modal">
+    <div class="modal-content">
+      <p class="odTexts">The opponent seems to be in dobut of his win. He offers a draw. Would you take it?</p>
+      <button onclick="accept_draw()">YES</button>
+      <button onclick="reject_draw()">NO WAY!</button>
     </div>
   </div>
   <div id="loader" class = 'modal'> <div class="movingFigures"> <p>&#9812;</p><p>&#9813;</p></div> <p>Please wait, we are loading</p></div>

@@ -3,7 +3,7 @@ let map = Array(), inf = Array(),
     save_pawn_figure, save_pawn_x, save_pawn_y, possible_moves, current_move = Array(), can_white_castle_left = true,
     can_white_castle_right = true, can_black_castle_left = true, can_black_castle_right = true,
     white_clock, black_clock,distance_w = 300, distance_b = 300,  is_white_paused = true,is_black_paused = true, white_lost_on_time,
-    black_lost_on_time, white_score = 0, black_score = 0, resign = false;
+    black_lost_on_time, white_score = 0, black_score = 0, resign = false, accept_draw_flag = false;
 
 function init_map() {
   can_white_castle_left  = true;
@@ -468,9 +468,13 @@ function start_new_game() {
   init_map();
   move_color = 'white';
   mark_moves_from();
-  distance_w = distance_b = 300;
+  // distance_w = distance_b = 300;
   white_clock = setInterval(init_timers('white'),1000);
   black_clock = setInterval(init_timers('black'),1000);
+  // is_white_paused = true;is_black_paused = true;
+  if(document.getElementById('newGame').style.display === 'inline') {
+    document.getElementById('newGame').style.display='none';
+  }
   show_board();
 }
 
@@ -478,28 +482,30 @@ function init_timers(color) {
   if (color === 'white') {
     return function() {
       let seconds = Math.floor(distance_w%60);
-      document.getElementById("min_white").innerHTML = Math.floor(distance_w/60);
+      document.getElementById("min_white").innerHTML = Math.floor(distance_w/60).toString();
       if (seconds <10) document.getElementById("sec_white").innerHTML = '0' + seconds;
-      else  document.getElementById("sec_white").innerHTML = seconds;
+      else  document.getElementById("sec_white").innerHTML = seconds.toString();
       if (distance_w < 0) {
         clearInterval(white_clock);
         document.getElementById("min_white").innerHTML = 'NO';
         document.getElementById("sec_white").innerHTML = 'TIME';
         white_lost_on_time = true;
+        endGame();
       }
       if(!is_white_paused) distance_w-=1;
     }
   } else{
     return function() {
         let seconds = Math.floor(distance_b%60);
-        document.getElementById("min_black").innerHTML =  Math.floor(distance_b/60);
+        document.getElementById("min_black").innerHTML =  Math.floor(distance_b/60).toString();
          if (seconds <10)  document.getElementById("sec_black").innerHTML = '0' + seconds;
-         else document.getElementById("sec_black").innerHTML = seconds;
+         else document.getElementById("sec_black").innerHTML = seconds.toString();
          if (distance_b < 0) {
           clearInterval(black_clock);
           document.getElementById("min_black").innerHTML = 'NO';
           document.getElementById("sec_black").innerHTML = 'TIME';
           black_lost_on_time = true;
+          endGame();
         }
         if(!is_black_paused) distance_b-=1;
       }
@@ -515,11 +521,25 @@ function alternate_time(flag){
     is_black_paused = false;
   }
 }
-  function resignGame() {
+
+function offer_draw() {document.getElementById('offerDraw').style.display = 'block';}
+function accept_draw(){
+  document.getElementById('offerDraw').style.display = 'none';
+  document.getElementById('newGame').style.display='inline';
+  accept_draw_flag = true;
+  endGame();
+}
+function reject_draw() {
+  document.getElementById('offerDraw').style.display = 'none';
+  accept_draw_flag = false;
+}
+function open_resign_modal() {document.getElementById('resignModal').style.display = 'block';}
+function hide_resign_modal() {document.getElementById('resignModal').style.display = 'none';}
+
+function resignGame() {
     resign = true;
-    clearInterval(black_clock);
-    clearInterval(white_clock);
     endGame();
+    document.getElementById('resignModal').style.display = 'none';
     document.getElementById('newGame').style.display='inline';
     resign = false;
 }
@@ -529,19 +549,22 @@ function alternate_time(flag){
         s_black = document.getElementById('s_black');
     try {
       if(white_lost_on_time){
-        possible_moves = 0;
-        if(is_checkmate()) { black_score += 1;}
+        reset_game();
+        black_score+=1;
+        document.getElementById('newGame').style.display='inline';
       }else if(black_lost_on_time){
-        possible_moves = 0;
-        if(is_checkmate()) {white_score +=1;}
+        reset_game();
+        white_score+=1;
+        document.getElementById('newGame').style.display='inline';
       }else if(is_checkmate()){
+        reset_game();
         move_color ==='white'?black_score +=1:white_score+=1;
-      } else if(is_stalemate()){
+      } else if(is_stalemate() || accept_draw_flag){
+        reset_game();
         black_score +=0.5;white_score+=0.5;
       } else if(resign){
+        reset_game();
         move_color ==='white'?black_score +=1:white_score+=1;
-        possible_moves=0;
-        resign = false;
       }
     } catch (e) {
 
@@ -549,4 +572,14 @@ function alternate_time(flag){
       s_black.innerHTML = black_score.toString();
       s_white.innerHTML = white_score.toString();
     }
+}
+
+function reset_game() {
+  init_inf();
+  clearInterval(black_clock);
+  clearInterval(white_clock);
+  white_lost_on_time = false; black_lost_on_time = false; accept_draw_flag = false; resign = false;
+  distance_w = distance_b = 300;
+  is_white_paused = true;is_black_paused = true;
+  can_white_castle_left = true;can_white_castle_right = true; can_black_castle_left = true; can_black_castle_right = true;
 }

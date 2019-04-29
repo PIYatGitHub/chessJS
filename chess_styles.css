@@ -13,7 +13,7 @@ h2{padding-bottom: 1em;}
 
 body            {display: flex; flex-direction: column;}
 main            {display: flex;}
-nav             {width: 20vw; margin-left: 2%;}
+nav, aside      {width: 15vw; margin-left: 2%;}
 main            {flex: 1;}
 section         {flex: 1;}
 nav             {order: -1;}
@@ -57,10 +57,14 @@ nav             {display: flex; flex-direction: column; justify-content: space-b
 }
 #loader{background-color: rgba(0,0,0,0.85); font-size: 6em;}
 #loader p {text-align: center;}
-#newGame {display: none; transition: all 0.3s ease-in;}
+#newGame {display: none;}
 .movingFigures{text-align: center;}
 .movingFigures p {display: inline;}
 .movingFigures p:nth-child(1) {animation: slideRight 1.5s infinite alternate ease-in-out;}
+.actionButtons{border: none; background: transparent; color: white; font-size: 1.25em;}
+.actionButtons{border: 1px solid white; border-radius: 5px; padding: 0.3em; cursor: pointer;}
+.actionButtons{transition: all 0.3s ease-in;}
+.actionButtons:hover{color:#2a7091; background: white;}
 
 .promotingButtons{align-self: center;}
 .promoteToFigure{border: none; background: transparent; color: white; font-size: 3em;}
