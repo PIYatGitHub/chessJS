@@ -16,7 +16,7 @@
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
 </head>
-<body>
+<body onload="show_loader(3000);">
   <header>
     <h1>Welcome to the wonderful game of chess.</h1>
     <h2>Enjoy and play as much as possible.</h2>
@@ -24,19 +24,19 @@
   <main>
     <section> <div id="board"></div></section>
     <nav>
-      <h2>Information panel</h2>
+      <h2>Action panel</h2>
       <h3> Moves</h3>
       <div id="moves"></div>
 
       <h3>Chess actions</h3>
-      <div id="chess_actions"> <button>New game</button> <button>Resign</button> <button>Offer draw</button></div>
+      <div id="chess_actions"> <button onclick="alternate_time();">New game</button> <button>Resign</button> <button>Offer draw</button></div>
 
       <div class="timedGame">
         <h3>Timer</h3>
-        <span>W</span>
-        <span id="t_white">00:00</span>
-        <span id="t_black">00:00</span>
-        <span>B</span>
+        <span>W</span> <button onclick="alternate_time('white')">End move</button>
+        <div id="white_clock"> <span id="min_white" class="minutes"></span> : <span id="sec_white" class="seconds"></span></div>
+        <div id="black_clock"> <span id="min_black" class="minutes"></span> : <span id="sec_black" class="seconds"></span></div>
+        <span>B</span> <button onclick="alternate_time('black')">End move</button>
       </div>
 
       <div class="scoring">
@@ -67,6 +67,13 @@
     </div>
   </div>
 
+  <div id="startNewGame" class="modal">
+    <div class="modal-content">
+      <p class="sngTexts">Start a new game of chess!</p>
+      <button onclick="start_new_game()">OK!</button>
+    </div>
+  </div>
+  <div id="loader" class = 'modal'> <div class="movingFigures"> <p>&#9812;</p><p>&#9813;</p></div> <p>Please wait, we are loading</p></div>
   <script type="text/javascript" src="chess.js"></script>
 </body>
 </html>

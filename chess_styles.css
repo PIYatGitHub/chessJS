@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
-
+@keyframes slideRight {
+  from { margin-left: -10em; }
+  to { margin-left: 10em;  }
+}
 * {box-sizing: border-box; margin: 0; padding: 0; }
 body  {font-family: 'Open Sans Condensed', sans-serif;}
 body{background: #244f6a;}
@@ -52,6 +55,12 @@ nav             {display: flex; flex-direction: column; justify-content: space-b
   border: 1px solid #888;
   width: 34.5%;
 }
+#loader{background-color: rgba(0,0,0,0.85); font-size: 6em;}
+#loader p {text-align: center;}
+
+.movingFigures{text-align: center;}
+.movingFigures p {display: inline;}
+.movingFigures p:nth-child(1) {animation: slideRight 1.5s infinite alternate ease-in-out;}
 
 .promotingButtons{align-self: center;}
 .promoteToFigure{border: none; background: transparent; color: white; font-size: 3em;}

@@ -1,7 +1,8 @@
 let map = Array(), inf = Array(),
     move_color='white', move_from_x, move_from_y,pawn_attack_x,pawn_attack_y,x_clon,y_clon,from_figure, to_figure,
     save_pawn_figure, save_pawn_x, save_pawn_y, possible_moves, current_move = Array(), can_white_castle_left = true,
-    can_white_castle_right = true, can_black_castle_left = true, can_black_castle_right = true;
+    can_white_castle_right = true, can_black_castle_left = true, can_black_castle_right = true,
+    white_clock, black_clock,distance_w = 300, distance_b = 300,  is_white_paused = true,is_black_paused = true;
 
 function init_map() {
   can_white_castle_left  = true;
@@ -13,10 +14,10 @@ function init_map() {
     ["N","P","","","","","p","n"],
     ["B","P","","","","","p","b"],
     ["Q","P","","","","","p","q"],
-    ["","K","","P","","","p","k"],
+    ["K","P","","","","","p","k"],
     ["B","P","","","","","p","b"],
     ["N","P","","","","","p","n"],
-    ["R","P","","q","","","p","r"]
+    ["R","P","","","","","p","r"]
   ];
 }
 
@@ -394,7 +395,9 @@ function check_pawn_attack(from_figure, to_x, to_y) {
   }
 }
 
-function turn_move() {move_color = (move_color === 'white')?'black':'white'}
+function turn_move() {move_color = (move_color === 'white')?'black':'white';
+  alternate_time(move_color)
+}
 
 function figure_to_html(figure) {
   switch (figure){
@@ -445,10 +448,59 @@ function show_info() {
   document.getElementById('moves').innerHTML = html;
 }
 
-function start() {
+function show_startup_screen() {document.getElementById('startNewGame').style.display='block';}
+
+function start_new_game() {
+  document.getElementById('startNewGame').style.display='none';
   init_map();
   mark_moves_from();
+  white_clock = setInterval(init_timers('white'),1000);
+  black_clock = setInterval(init_timers('black'),1000);
   show_board();
 }
 
-start();
+function show_loader(time){
+  let loader =  document.getElementById('loader');
+  loader.style.display='block';
+  setTimeout(function () {loader.style.display='none'; show_startup_screen();}, time);
+}
+function init_timers(color) {
+
+  if (color === 'white') {
+    return function() {
+      let seconds = Math.floor(distance_w%60);
+      document.getElementById("min_white").innerHTML = Math.floor(distance_w/60);
+      if (seconds <10) document.getElementById("sec_white").innerHTML = '0' + seconds;
+      else  document.getElementById("sec_white").innerHTML = seconds;
+      if (distance_w < 0) {
+        clearInterval(white_clock);
+        document.getElementById("min_white").innerHTML = 'NO';
+        document.getElementById("sec_white").innerHTML = 'TIME';
+      }
+      if(!is_white_paused) distance_w-=1;
+    }
+  } else{
+    return function() {
+        let seconds = Math.floor(distance_b%60);
+        document.getElementById("min_black").innerHTML =  Math.floor(distance_b/60);
+         if (seconds <10)  document.getElementById("sec_black").innerHTML = '0' + seconds;
+         else document.getElementById("sec_black").innerHTML = seconds;
+         if (distance_b < 0) {
+          clearInterval(black_clock);
+          document.getElementById("min_black").innerHTML = 'NO';
+          document.getElementById("sec_black").innerHTML = 'TIME';
+        }
+        if(!is_black_paused) distance_b-=1;
+      }
+    }
+}
+
+function alternate_time(flag){
+  if(flag === 'white') {
+   is_white_paused = false;
+   is_black_paused = true;
+  } else if(flag === 'black') {
+    is_white_paused = true;
+    is_black_paused = false;
+  }
+}
