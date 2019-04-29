@@ -2,7 +2,8 @@ let map = Array(), inf = Array(),
     move_color='white', move_from_x, move_from_y,pawn_attack_x,pawn_attack_y,x_clon,y_clon,from_figure, to_figure,
     save_pawn_figure, save_pawn_x, save_pawn_y, possible_moves, current_move = Array(), can_white_castle_left = true,
     can_white_castle_right = true, can_black_castle_left = true, can_black_castle_right = true,
-    white_clock, black_clock,distance_w = 300, distance_b = 300,  is_white_paused = true,is_black_paused = true;
+    white_clock, black_clock,distance_w = 300, distance_b = 300,  is_white_paused = true,is_black_paused = true, white_lost_on_time,
+    black_lost_on_time, white_score = 0, black_score = 0, resign = false;
 
 function init_map() {
   can_white_castle_left  = true;
@@ -312,6 +313,12 @@ function click_box_to(to_x,to_y) {
   check_pawn_attack(from_figure,to_x, to_y);
   turn_move();
   mark_moves_from();
+  if(is_checkmate() || is_stalemate()) {
+    clearInterval(black_clock);
+    clearInterval(white_clock);
+    document.getElementById('newGame').style.display='inline';
+  }
+  endGame();
   form_current_move_aux();
   show_board();
 }
@@ -396,7 +403,7 @@ function check_pawn_attack(from_figure, to_x, to_y) {
 }
 
 function turn_move() {move_color = (move_color === 'white')?'black':'white';
-  alternate_time(move_color)
+  alternate_time(move_color);
 }
 
 function figure_to_html(figure) {
@@ -448,24 +455,26 @@ function show_info() {
   document.getElementById('moves').innerHTML = html;
 }
 
-function show_startup_screen() {document.getElementById('startNewGame').style.display='block';}
-
-function start_new_game() {
-  document.getElementById('startNewGame').style.display='none';
-  init_map();
-  mark_moves_from();
-  white_clock = setInterval(init_timers('white'),1000);
-  black_clock = setInterval(init_timers('black'),1000);
-  show_board();
-}
-
 function show_loader(time){
   let loader =  document.getElementById('loader');
   loader.style.display='block';
   setTimeout(function () {loader.style.display='none'; show_startup_screen();}, time);
 }
-function init_timers(color) {
 
+function show_startup_screen() {document.getElementById('startNewGame').style.display='block';}
+
+function start_new_game() {
+  document.getElementById('startNewGame').style.display='none';
+  init_map();
+  move_color = 'white';
+  mark_moves_from();
+  distance_w = distance_b = 300;
+  white_clock = setInterval(init_timers('white'),1000);
+  black_clock = setInterval(init_timers('black'),1000);
+  show_board();
+}
+
+function init_timers(color) {
   if (color === 'white') {
     return function() {
       let seconds = Math.floor(distance_w%60);
@@ -476,6 +485,7 @@ function init_timers(color) {
         clearInterval(white_clock);
         document.getElementById("min_white").innerHTML = 'NO';
         document.getElementById("sec_white").innerHTML = 'TIME';
+        white_lost_on_time = true;
       }
       if(!is_white_paused) distance_w-=1;
     }
@@ -489,6 +499,7 @@ function init_timers(color) {
           clearInterval(black_clock);
           document.getElementById("min_black").innerHTML = 'NO';
           document.getElementById("sec_black").innerHTML = 'TIME';
+          black_lost_on_time = true;
         }
         if(!is_black_paused) distance_b-=1;
       }
@@ -497,10 +508,45 @@ function init_timers(color) {
 
 function alternate_time(flag){
   if(flag === 'white') {
-   is_white_paused = false;
-   is_black_paused = true;
+    is_white_paused = false;
+    is_black_paused = true;
   } else if(flag === 'black') {
     is_white_paused = true;
     is_black_paused = false;
   }
+}
+  function resignGame() {
+    resign = true;
+    clearInterval(black_clock);
+    clearInterval(white_clock);
+    endGame();
+    document.getElementById('newGame').style.display='inline';
+    resign = false;
+}
+
+ function endGame() {
+    let s_white = document.getElementById('s_white'),
+        s_black = document.getElementById('s_black');
+    try {
+      if(white_lost_on_time){
+        possible_moves = 0;
+        if(is_checkmate()) { black_score += 1;}
+      }else if(black_lost_on_time){
+        possible_moves = 0;
+        if(is_checkmate()) {white_score +=1;}
+      }else if(is_checkmate()){
+        move_color ==='white'?black_score +=1:white_score+=1;
+      } else if(is_stalemate()){
+        black_score +=0.5;white_score+=0.5;
+      } else if(resign){
+        move_color ==='white'?black_score +=1:white_score+=1;
+        possible_moves=0;
+        resign = false;
+      }
+    } catch (e) {
+
+    }finally {
+      s_black.innerHTML = black_score.toString();
+      s_white.innerHTML = white_score.toString();
+    }
 }

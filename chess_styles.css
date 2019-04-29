@@ -57,7 +57,7 @@ nav             {display: flex; flex-direction: column; justify-content: space-b
 }
 #loader{background-color: rgba(0,0,0,0.85); font-size: 6em;}
 #loader p {text-align: center;}
-
+#newGame {display: none; transition: all 0.3s ease-in;}
 .movingFigures{text-align: center;}
 .movingFigures p {display: inline;}
 .movingFigures p:nth-child(1) {animation: slideRight 1.5s infinite alternate ease-in-out;}
