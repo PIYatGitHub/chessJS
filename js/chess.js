@@ -3,7 +3,7 @@ let map = Array(), inf = Array(),
     save_pawn_figure, save_pawn_x, save_pawn_y, possible_moves, current_move = Array(), can_white_castle_left = true,
     can_white_castle_right = true, can_black_castle_left = true, can_black_castle_right = true,
     white_clock, black_clock,distance_w = 300, distance_b = 300,  is_white_paused = true,is_black_paused = true, white_lost_on_time,
-    black_lost_on_time, white_score = 0, black_score = 0, resign = false, accept_draw_flag = false;
+    black_lost_on_time, white_score = 0, black_score = 0, resign = false, accept_draw_flag = false, manual_time_switching = false;
 
 function init_map() {
   can_white_castle_left  = true;
@@ -463,15 +463,22 @@ function show_loader(time){
 
 function show_startup_screen() {document.getElementById('startNewGame').style.display='block';}
 
+function parse_game_prefs(){
+
+  start_new_game();
+}
+
 function start_new_game() {
   document.getElementById('startNewGame').style.display='none';
   init_map();
   move_color = 'white';
   mark_moves_from();
-  // distance_w = distance_b = 300;
   white_clock = setInterval(init_timers('white'),1000);
   black_clock = setInterval(init_timers('black'),1000);
-  // is_white_paused = true;is_black_paused = true;
+  if(!manual_time_switching) {
+    document.getElementById('wc_man').style.display = 'none';
+    document.getElementById('bc_man').style.display = 'none';
+  }
   if(document.getElementById('newGame').style.display === 'inline') {
     document.getElementById('newGame').style.display='none';
   }
@@ -580,6 +587,6 @@ function reset_game() {
   clearInterval(white_clock);
   white_lost_on_time = false; black_lost_on_time = false; accept_draw_flag = false; resign = false;
   distance_w = distance_b = 300;
-  is_white_paused = true;is_black_paused = true;
+  is_white_paused = true;is_black_paused = true; manual_time_switching = false;
   can_white_castle_left = true;can_white_castle_right = true; can_black_castle_left = true; can_black_castle_right = true;
 }

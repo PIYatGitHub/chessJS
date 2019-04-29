@@ -1,0 +1,14 @@
+#board table{border-collapse: collapse; margin: 0 auto;}
+.fields{text-align: center; cursor: pointer;}
+
+#moves{
+  color: white; font-size: 1.25em; max-height: 10em;
+  overflow-y: auto;}
+
+#loader{background-color: rgba(0,0,0,0.85); font-size: 6em;}
+#loader p {text-align: center;}
+#newGame {display: none;}
+#whites_time {width: 3em; align-self: flex-end;}
+#blacks_time {width: 3em; align-self: flex-end;}
+
+@media only screen and (max-width: 48em) {/*the 768px breakpoint goes here*/}
