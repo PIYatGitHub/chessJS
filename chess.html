@@ -27,32 +27,45 @@
   <main>
     <section> <div id="board"></div></section>
     <nav>
-      <h2>Action panel</h2>
+      <h2>Notation panel</h2>
       <h3> Moves</h3>
       <div id="moves"></div>
     </nav>
     <aside>
+      <h2>Action panel</h2>
       <h3>Chess actions</h3>
       <div id="chess_actions">
         <button id="newGame" class="actionButtons" onclick="show_startup_screen();">New game</button>
-        <button class="actionButtons" onclick="open_resign_modal();">Resign</button>
+        <button class="actionButtons" id="resignGame" onclick="open_resign_modal();">Resign</button>
         <button class="actionButtons" onclick="offer_draw();">Offer draw</button>
+        <button class="actionButtons" id="pauseGame" onclick="pause_game();">Pause game</button>
+        <button class="actionButtons" id="resumeGame" onclick="resume_game();">Resume game</button>
       </div>
-      <div class="timedGame">
+      <div class="timedGame clearFix">
         <h3>Timer</h3>
-        <span>W</span> <button id="wc_man" class="clock" onclick="alternate_time('white')">End move</button>
-        <div id="white_clock"> <span id="min_white" class="minutes"></span> : <span id="sec_white" class="seconds"></span></div>
-        <div id="black_clock"> <span id="min_black" class="minutes"></span> : <span id="sec_black" class="seconds"></span></div>
-        <span>B</span> <button id = "bc_man" class="clock" onclick="alternate_time('black')">End move</button>
+
+        <div id="white_clock">
+          <span>White:</span>
+          <span id="min_white" class="minutes"></span> : <span id="sec_white" class="seconds"></span>
+        </div>
+        <div id="black_clock">
+          <span>Black:</span>
+          <span id="min_black" class="minutes"></span> : <span id="sec_black" class="seconds"></span>
+        </div>
+        <div id="toggles">
+          <button id="wc_man" class="clock" onclick="alternate_time('black')"></button>
+          <button id = "bc_man" class="clock" onclick="alternate_time('white')"></button>
+        </div>
+
       </div>
 
       <div class="scoring">
         <h3>The score</h3>
-        <span>W</span>
+        <span>White:</span>
         <span id="s_white">0</span>
         <span> &#8596; </span>
         <span id="s_black">0</span>
-        <span>B</span>
+        <span>:Black</span>
       </div>
     </aside>
   </main>
@@ -82,7 +95,7 @@
             <input id="blacks_time" name="blacks_time" type="number" min="0" max="120" value="5"/>
 
             <label class="cb_container">Would you like manual time switching?
-              <input type="checkbox" checked="checked">
+              <input id = "man_time_select" type="checkbox" checked="checked">
               <span class="checkmark"></span>
             </label>
           </div>

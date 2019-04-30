@@ -1,18 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300');
 @keyframes slideRight { from { margin-left: -10em; } to { margin-left: 10em;  } }
+@keyframes fadeOutIn { from { opacity:1; } to { opacity:0.35;} }
+
 
 * {box-sizing: border-box; margin: 0; padding: 0; }
-body  {font-family: 'Open Sans Condensed', sans-serif;}
+body  {font-family: 'Open Sans Condensed', sans-serif; color: white;}
 body{background: #244f6a;}
-h1, h2 {text-align: center; color: white;}
+h1, h2, h3 {text-align: center; color: white;}
+p{color: white;}
 h1{padding-top: 1em;}
 h2{padding-bottom: 1em;}
 body            {display: flex; flex-direction: column;}
 main            {display: flex;}
-nav, aside      {width: 15vw; margin-left: 2%;}
+nav, aside      {width: 15vw;}
+aside           {display: flex; flex-direction: column; justify-content: space-between;}
+nav             {margin-left: 2%;}
+aside           {margin-right: 2%;}
 main            {flex: 1;}
 section         {flex: 1;}
 nav             {order: -1;}
-nav             {display: flex; flex-direction: column; justify-content: space-between;}
 input{font-size: 1.25em; text-align: center;}
 label{font-size: 1.25em;}
+footer {font-size: 1.25em; text-align: center; margin-top: 1em;}
+footer a {text-decoration: none; color: white; cursor: pointer;}
+footer a:hover {text-decoration: underline;}

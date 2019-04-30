@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d4d30d3-22d0-42a2-b78e-4eba94b57454" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/css/checkbox.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/general_selectors.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/css/modal.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android-chrome-96x96.png" beforeDir="false" afterPath="$PROJECT_DIR$/favicon/android-chrome-96x96.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apple-touch-icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/favicon/apple-touch-icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/browserconfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/favicon/browserconfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chess.html" beforeDir="false" afterPath="$PROJECT_DIR$/chess.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chess.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chess.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chess_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/chess_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favicon-16x16.png" beforeDir="false" afterPath="$PROJECT_DIR$/favicon/favicon-16x16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favicon-32x32.png" beforeDir="false" afterPath="$PROJECT_DIR$/favicon/favicon-32x32.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/favicon/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mstile-150x150.png" beforeDir="false" afterPath="$PROJECT_DIR$/favicon/mstile-150x150.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/safari-pinned-tab.svg" beforeDir="false" afterPath="$PROJECT_DIR$/favicon/safari-pinned-tab.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site.webmanifest" beforeDir="false" afterPath="$PROJECT_DIR$/favicon/site.webmanifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/chess_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/chess_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/general_selectors.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/general_selectors.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/chess.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chess.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="chess.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chess.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chess.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="46" lean-forward="true" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+            <state relative-caret-position="486">
+              <caret line="67" column="26" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="67" selection-end-column="26" />
               <folding>
                 <element signature="e#1202#1208#1" expanded="true" />
               </folding>
@@ -43,11 +31,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chess_styles.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chess_styles.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/chess_styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            <state relative-caret-position="391">
+              <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="general_selectors.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/css/general_selectors.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="23" column="63" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
             </state>
           </provider>
         </entry>
@@ -55,8 +52,8 @@
       <file leaf-file-name="chess.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/chess.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6">
-              <caret line="445" selection-start-line="445" selection-end-line="445" />
+            <state relative-caret-position="408">
+              <caret line="557" column="60" selection-start-line="557" selection-start-column="60" selection-end-line="557" selection-end-column="60" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
@@ -87,7 +84,6 @@
       <find>promote_pawn</find>
       <find>click</find>
       <find>click_box_to</find>
-      <find>promote</find>
       <find>click_box</find>
       <find>get_color</find>
       <find>check</find>
@@ -98,6 +94,11 @@
       <find>mark</find>
       <find>start_new_game</find>
       <find>newGame</find>
+      <find>pro</find>
+      <find>possible_moves</find>
+      <find>promote</find>
+      <find>wc</find>
+      <find>distance_w</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -110,10 +111,11 @@
         <option value="$PROJECT_DIR$/chess_styles.css" />
         <option value="$PROJECT_DIR$/checkbox.css" />
         <option value="$PROJECT_DIR$/css/checkbox.css" />
-        <option value="$PROJECT_DIR$/css/general_selectors.css" />
         <option value="$PROJECT_DIR$/css/modal.css" />
-        <option value="$PROJECT_DIR$/css/chess_styles.css" />
+        <option value="$PROJECT_DIR$/css/general_selectors.css" />
         <option value="$PROJECT_DIR$/chess.html" />
+        <option value="$PROJECT_DIR$/js/chess.js" />
+        <option value="$PROJECT_DIR$/css/chess_styles.css" />
       </list>
     </option>
   </component>
@@ -127,8 +129,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="730" />
+    <option name="x" value="833" />
+    <option name="width" value="854" />
     <option name="height" value="1017" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -202,12 +204,12 @@
       <workItem from="1556282493218" duration="4073000" />
       <workItem from="1556306183888" duration="272000" />
       <workItem from="1556359790442" duration="16319000" />
-      <workItem from="1556428316946" duration="44651000" />
+      <workItem from="1556428316946" duration="55551000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132732000" />
+    <option name="totallyTimeSpent" value="143632000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -222,8 +224,8 @@
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32971668" />
-      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.0" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16214587" />
+      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.3258427" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -412,17 +414,6 @@
     <entry file="file://$PROJECT_DIR$/preloader.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/chess.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="445" selection-start-line="445" selection-end-line="445" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/checkbox.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
@@ -439,25 +430,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/general_selectors.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+        <state relative-caret-position="391">
+          <caret line="23" column="63" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/chess_styles.css">
+    <entry file="file://$PROJECT_DIR$/js/chess.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        <state relative-caret-position="408">
+          <caret line="557" column="60" selection-start-line="557" selection-start-column="60" selection-end-line="557" selection-end-column="60" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chess.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="46" lean-forward="true" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+        <state relative-caret-position="486">
+          <caret line="67" column="26" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="67" selection-end-column="26" />
           <folding>
             <element signature="e#1202#1208#1" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/chess_styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
         </state>
       </provider>
     </entry>

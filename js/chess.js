@@ -2,7 +2,7 @@ let map = Array(), inf = Array(),
     move_color='white', move_from_x, move_from_y,pawn_attack_x,pawn_attack_y,x_clon,y_clon,from_figure, to_figure,
     save_pawn_figure, save_pawn_x, save_pawn_y, possible_moves, current_move = Array(), can_white_castle_left = true,
     can_white_castle_right = true, can_black_castle_left = true, can_black_castle_right = true,
-    white_clock, black_clock,distance_w = 300, distance_b = 300,  is_white_paused = true,is_black_paused = true, white_lost_on_time,
+    white_clock, black_clock,distance_w=300, distance_b=300,  is_white_paused = true,is_black_paused = true, white_lost_on_time,
     black_lost_on_time, white_score = 0, black_score = 0, resign = false, accept_draw_flag = false, manual_time_switching = false;
 
 function init_map() {
@@ -368,9 +368,17 @@ function promote_pawn(from_figure, x_clon, y_clon, user_restored_figure) {
     user_restored_figure = user_restored_figure.toLowerCase();
   else
     user_restored_figure = user_restored_figure.toUpperCase();
-    map[x_clon][y_clon] = user_restored_figure;
-    fancy_dialog.style.display = 'none';
-    show_board();
+
+  map[x_clon][y_clon] = user_restored_figure;
+  fancy_dialog.style.display = 'none';
+  if(is_checkmate_after_pawnPromotion()) {
+    endGame();
+  }
+  show_board();
+}
+function  is_checkmate_after_pawnPromotion(){
+  mark_moves_from();
+  return possible_moves ===0;
 }
 function move_pawn_attack(from_figure, to_x, to_y) {
   let y;
@@ -403,7 +411,7 @@ function check_pawn_attack(from_figure, to_x, to_y) {
 }
 
 function turn_move() {move_color = (move_color === 'white')?'black':'white';
-  alternate_time(move_color);
+if(!manual_time_switching) alternate_time(move_color);
 }
 
 function figure_to_html(figure) {
@@ -464,18 +472,25 @@ function show_loader(time){
 function show_startup_screen() {document.getElementById('startNewGame').style.display='block';}
 
 function parse_game_prefs(){
-
+  distance_w = document.getElementById('whites_time').value*60;
+  distance_b = document.getElementById('blacks_time').value*60;
+  manual_time_switching = document.getElementById('man_time_select').checked;
   start_new_game();
 }
 
 function start_new_game() {
   document.getElementById('startNewGame').style.display='none';
+  document.getElementById('resumeGame').style.display='none';
   init_map();
   move_color = 'white';
   mark_moves_from();
   white_clock = setInterval(init_timers('white'),1000);
   black_clock = setInterval(init_timers('black'),1000);
-  if(!manual_time_switching) {
+  is_white_paused = false;
+  if(manual_time_switching) {
+    document.getElementById('wc_man').style.display = 'inline';
+    document.getElementById('bc_man').style.display = 'inline';
+  } else {
     document.getElementById('wc_man').style.display = 'none';
     document.getElementById('bc_man').style.display = 'none';
   }
@@ -523,16 +538,29 @@ function alternate_time(flag){
   if(flag === 'white') {
     is_white_paused = false;
     is_black_paused = true;
+    document.getElementById('wc_man').innerText = 'Your move!';
+    document.getElementById('bc_man').innerText = '';
   } else if(flag === 'black') {
+    document.getElementById('bc_man').innerText = 'Your move!';
+    document.getElementById('wc_man').innerText = '';
     is_white_paused = true;
     is_black_paused = false;
   }
 }
-
+function pause_game() {
+  is_white_paused = true;
+  is_black_paused = true;
+  document.getElementById('resumeGame').style.display='inline';
+  document.getElementById('pauseGame').style.display='none';
+}
+function resume_game() {
+  document.getElementById('resumeGame').style.display='none';
+  document.getElementById('pauseGame').style.display='inline';
+  alternate_time(move_color);
+}
 function offer_draw() {document.getElementById('offerDraw').style.display = 'block';}
 function accept_draw(){
   document.getElementById('offerDraw').style.display = 'none';
-  document.getElementById('newGame').style.display='inline';
   accept_draw_flag = true;
   endGame();
 }
@@ -547,7 +575,6 @@ function resignGame() {
     resign = true;
     endGame();
     document.getElementById('resignModal').style.display = 'none';
-    document.getElementById('newGame').style.display='inline';
     resign = false;
 }
 
@@ -558,11 +585,9 @@ function resignGame() {
       if(white_lost_on_time){
         reset_game();
         black_score+=1;
-        document.getElementById('newGame').style.display='inline';
       }else if(black_lost_on_time){
         reset_game();
         white_score+=1;
-        document.getElementById('newGame').style.display='inline';
       }else if(is_checkmate()){
         reset_game();
         move_color ==='white'?black_score +=1:white_score+=1;
@@ -585,8 +610,9 @@ function reset_game() {
   init_inf();
   clearInterval(black_clock);
   clearInterval(white_clock);
+  document.getElementById('newGame').style.display='inline';
   white_lost_on_time = false; black_lost_on_time = false; accept_draw_flag = false; resign = false;
-  distance_w = distance_b = 300;
+  distance_w = 300; distance_b = 300;
   is_white_paused = true;is_black_paused = true; manual_time_switching = false;
   can_white_castle_left = true;can_white_castle_right = true; can_black_castle_left = true; can_black_castle_right = true;
 }

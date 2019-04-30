@@ -2,7 +2,7 @@
 .fields{text-align: center; cursor: pointer;}
 
 #moves{
-  color: white; font-size: 1.25em; max-height: 10em;
+  color: white; font-size: 1.25em; max-height: 20em;
   overflow-y: auto;}
 
 #loader{background-color: rgba(0,0,0,0.85); font-size: 6em;}
@@ -10,5 +10,16 @@
 #newGame {display: none;}
 #whites_time {width: 3em; align-self: flex-end;}
 #blacks_time {width: 3em; align-self: flex-end;}
-
+#chess_actions {display: flex; flex-direction: column;}
+#resignGame,#pauseGame, #resumeGame {margin: 1em 0;}
+#white_clock, #black_clock {font-size:1.25em;}
+#black_clock {float: right;}
+.clearFix:after {content:""; display:table; clear: both;}
+#toggles {clear: both;}
+#wc_man,#bc_man {width: 6em; height: 3em;}
+#wc_man {color:black;}
+#bc_man {color:white; float:right;}
+#wc_man {background:white; border: none; cursor: pointer;}
+#bc_man {background:black; border: none; cursor: pointer;}
+.scoring span {font-size: 1.25em;}
 @media only screen and (max-width: 48em) {/*the 768px breakpoint goes here*/}
