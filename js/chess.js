@@ -326,20 +326,22 @@ function click_box_to(to_x,to_y) {
 function form_current_move(move_from_x,move_from_y,to_x,to_y) {
   //TODO Refine that into two columns and stuff///
   let mapToLetter = ['a','b','c','d','e','f','g','h'], entry = '';
-  if(map[move_from_x][move_from_y].toUpperCase()!=='P') entry += map[move_from_x][move_from_y];
+  if(map[move_from_x][move_from_y].toUpperCase()!=='P') entry += map[move_from_x][move_from_y] + ' ';
   console.log('map tox toy',map[to_x][to_y]);
-  if(map[to_x][to_y] !== '') entry += ' X ';
-  entry += `${mapToLetter[move_from_x]}${move_from_y+1} ${map[to_x][to_y]} ${mapToLetter[to_x]}${to_y+1}`;
+  entry += `${mapToLetter[move_from_x]}${move_from_y+1}`;
+  if(map[to_x][to_y] !== '') entry += ' x ';
+  else entry += ' - ';
+  entry += `${mapToLetter[to_x]}${to_y+1}`;
+
   if(map[move_from_x][move_from_y] === 'K' && can_white_castle_left &&  to_x ===2) {entry += ' O-O-O';}
   if(map[move_from_x][move_from_y] === 'K' && can_white_castle_right && to_x ===6) {entry += ' O-O'  ;}
   if(map[move_from_x][move_from_y] === 'k' && can_black_castle_left &&  to_x ===2) {entry += ' O-O-O';}
   if(map[move_from_x][move_from_y] === 'k' && can_black_castle_right && to_x ===6) {entry += ' O-O'  ;}
   current_move.push(entry);
-  current_move.push("<br/>");
 }
 function form_current_move_aux(){
-  if(is_check() && possible_moves !== 0)      current_move[current_move.length-2] += ' +';
-  if(is_checkmate() && possible_moves === 0)  current_move[current_move.length-2] += ' #';
+  if(is_check() && possible_moves !== 0)      current_move[current_move.length-1] += ' +';
+  if(is_checkmate() && possible_moves === 0)  current_move[current_move.length-1] += ' #';
 }
 
 
@@ -458,8 +460,22 @@ function show_board() {
 }
 
 function show_info() {
-  let html = "Who is on the move? " + move_color + "<br/>", curr_move = current_move.join("");
-  html+= curr_move;
+  let html = "Who is on the move? " + move_color + "<br/>", len = current_move.length;
+  console.log('currmove', current_move);
+  for(let i=0, index =1; i<len; i+=2, index+=1){
+    let letter = current_move[i].substring(0,1).toUpperCase();
+    if(current_move[i+1]) {
+      if(letter==='N'||letter==='K' || letter ==='B' || letter==='Q' || letter ==='R') {
+        html+= index + '.&nbsp;&nbsp;&nbsp;' + current_move[i] + '&nbsp; &nbsp;' + current_move[i+1];
+        html += '<br/>'
+      } else {
+        html+= index + '.&nbsp;&nbsp;&nbsp;' + current_move[i] + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' + current_move[i+1];
+        html += '<br/>'
+      }
+
+    }
+    else {html+= index + '.&nbsp;&nbsp;&nbsp;' + current_move[i] + '';}
+  }
   document.getElementById('moves').innerHTML = html;
 }
 

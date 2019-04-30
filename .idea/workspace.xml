@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9d4d30d3-22d0-42a2-b78e-4eba94b57454" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/chess.html" beforeDir="false" afterPath="$PROJECT_DIR$/chess.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/chess_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/chess_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/general_selectors.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/general_selectors.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/chess.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/chess.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -19,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="chess.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="chess.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/chess.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="67" column="26" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="67" selection-end-column="26" />
+            <state relative-caret-position="265">
+              <caret line="71" column="21" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
               <folding>
                 <element signature="e#1202#1208#1" expanded="true" />
               </folding>
@@ -31,7 +29,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chess_styles.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="chess_styles.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/chess_styles.css">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
@@ -52,11 +50,14 @@
       <file leaf-file-name="chess.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/chess.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="557" column="60" selection-start-line="557" selection-start-column="60" selection-end-line="557" selection-end-column="60" />
+            <state relative-caret-position="272">
+              <caret line="476" column="45" selection-start-line="476" selection-start-column="45" selection-end-line="476" selection-end-column="45" />
               <folding>
+                <element signature="e#3642#3648#1" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="e#4081#4200#0" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="e#4356#4475#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -99,6 +100,7 @@
       <find>promote</find>
       <find>wc</find>
       <find>distance_w</find>
+      <find>current_move</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -113,9 +115,9 @@
         <option value="$PROJECT_DIR$/css/checkbox.css" />
         <option value="$PROJECT_DIR$/css/modal.css" />
         <option value="$PROJECT_DIR$/css/general_selectors.css" />
-        <option value="$PROJECT_DIR$/chess.html" />
-        <option value="$PROJECT_DIR$/js/chess.js" />
         <option value="$PROJECT_DIR$/css/chess_styles.css" />
+        <option value="$PROJECT_DIR$/js/chess.js" />
+        <option value="$PROJECT_DIR$/chess.html" />
       </list>
     </option>
   </component>
@@ -128,7 +130,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="833" />
     <option name="width" value="854" />
     <option name="height" value="1017" />
@@ -204,12 +206,12 @@
       <workItem from="1556282493218" duration="4073000" />
       <workItem from="1556306183888" duration="272000" />
       <workItem from="1556359790442" duration="16319000" />
-      <workItem from="1556428316946" duration="55551000" />
+      <workItem from="1556428316946" duration="59116000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143632000" />
+    <option name="totallyTimeSpent" value="147197000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -221,7 +223,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16214587" />
@@ -277,8 +279,11 @@
         <state relative-caret-position="6392">
           <caret line="376" column="11" selection-start-line="376" selection-start-column="11" selection-end-line="376" selection-end-column="11" />
           <folding>
+            <element signature="e#3642#3648#1" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4081#4200#0" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4356#4475#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -302,8 +307,11 @@
         <state relative-caret-position="6851">
           <caret line="403" column="14" lean-forward="true" selection-start-line="403" selection-start-column="14" selection-end-line="403" selection-end-column="14" />
           <folding>
+            <element signature="e#3642#3648#1" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4081#4200#0" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4356#4475#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -327,8 +335,11 @@
         <state relative-caret-position="7429">
           <caret line="437" column="8" lean-forward="true" selection-start-line="437" selection-start-column="8" selection-end-line="437" selection-end-column="8" />
           <folding>
+            <element signature="e#3642#3648#1" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4081#4200#0" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4356#4475#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -352,8 +363,11 @@
         <state relative-caret-position="1275">
           <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
           <folding>
+            <element signature="e#3642#3648#1" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4081#4200#0" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4356#4475#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -377,8 +391,11 @@
         <state relative-caret-position="4760">
           <caret line="280" column="53" selection-start-line="280" selection-start-column="53" selection-end-line="280" selection-end-column="53" />
           <folding>
+            <element signature="e#3642#3648#1" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4081#4200#0" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4356#4475#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -395,8 +412,11 @@
         <state relative-caret-position="34">
           <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
           <folding>
+            <element signature="e#3642#3648#1" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4081#4200#0" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4356#4475#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -435,31 +455,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/chess_styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/chess.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="557" column="60" selection-start-line="557" selection-start-column="60" selection-end-line="557" selection-end-column="60" />
+        <state relative-caret-position="272">
+          <caret line="476" column="45" selection-start-line="476" selection-start-column="45" selection-end-line="476" selection-end-column="45" />
           <folding>
+            <element signature="e#3642#3648#1" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4081#4200#0" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#4356#4475#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/chess.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="67" column="26" lean-forward="true" selection-start-line="64" selection-start-column="8" selection-end-line="67" selection-end-column="26" />
+        <state relative-caret-position="265">
+          <caret line="71" column="21" selection-start-line="71" selection-start-column="21" selection-end-line="71" selection-end-column="21" />
           <folding>
             <element signature="e#1202#1208#1" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/chess_styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
         </state>
       </provider>
     </entry>
